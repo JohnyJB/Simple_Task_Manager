@@ -37,9 +37,9 @@ document.getElementById("taskform").addEventListener("submit", function(e){
 
 
 // MARCAR TAREA COMPLETADA
+// MARCAR TAREA COMPLETADA
 document.querySelectorAll(".taskcheck").forEach(box => {
 
-    // Marca o desmarca tarea
     box.addEventListener("change", function(){
 
         let formData = new FormData()
@@ -51,5 +51,28 @@ document.querySelectorAll(".taskcheck").forEach(box => {
             body: formData
         })
 
+        // li de checkbox
+        let li = this.closest("li")
+
+        // span
+        let span = li.querySelector("span")
+
+        if(this.checked){
+
+            li.classList.remove("bg-warning")
+            li.classList.add("bg-success")
+
+            span.classList.add("text-decoration-line-through")
+
+        }else{
+
+            li.classList.remove("bg-success")
+            li.classList.add("bg-warning")
+
+            span.classList.remove("text-decoration-line-through")
+
+        }
+
     })
+
 })
